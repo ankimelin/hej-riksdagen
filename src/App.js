@@ -8,14 +8,14 @@ export const App = () => {
   return (
     <Router>
       <Switch>
-        <Route path='/' exact>
-          <Redirect to='/vi-som-jobbar-har' />
-        </Route>
         <Route path='/vi-som-jobbar-har' exact>
           <WeWhoWorkHere />
         </Route>
         <Route path='/stall-en-fraga' exact>
           <AskAQuestion />
+        </Route>
+        <Route>
+          <Redirect to='/vi-som-jobbar-har' />
         </Route>
       </Switch>
     </Router>

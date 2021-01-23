@@ -1,13 +1,11 @@
 import React from 'react'
 
-import { Navbar } from './Navbar.js'
-import { Title } from './Title.js'
-
 export const Header = () => {
   return (
     <>
-      <Navbar />
-      <Title />
+      <h3>Vi som jobbar här</h3>
+      <h3>Ställ en fråga</h3>
+      <h1>hej riksdagen</h1>
     </>
   )
 }
