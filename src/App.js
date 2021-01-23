@@ -1,9 +1,23 @@
 import React from 'react'
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
+
+import { WeWhoWorkHere } from './routes/WeWhoWorkHere.js'
+import { AskAQuestion } from './routes/AskAQuestion.js'
 
 export const App = () => {
   return (
-    <div>
-      Find me in src/app.js!
-    </div>
+    <Router>
+      <Switch>
+        <Route path='/' exact>
+          <Redirect to='/vi-som-jobbar-har' />
+        </Route>
+        <Route path='/vi-som-jobbar-har' exact>
+          <WeWhoWorkHere />
+        </Route>
+        <Route path='/stall-en-fraga' exact>
+          <AskAQuestion />
+        </Route>
+      </Switch>
+    </Router>
   )
 }
