@@ -1,8 +1,8 @@
 import React from 'react'
 
-import { Header } from '../components/Header.js'
-import { Question } from '../components/Question.js'
-import { Footer } from '../components/Footer.js'
+import { Header } from '../components/Header'
+import { Question } from '../components/Question'
+import { Footer } from '../components/Footer'
 
 export const AskAQuestion = () => {
   return (

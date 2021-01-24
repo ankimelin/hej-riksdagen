@@ -1,107 +1,17 @@
 import React, { useState, useEffect } from 'react'
-import styled from 'styled-components'
 import Loader from 'react-loader-spinner'
 
-import { Member } from './Member.js'
+import { Member } from './Member'
+import { PartyContainer, PartyButton, LoaderContainer, MembersContainer } from '../styling/StyledMemberList'
 
-const PartyContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin: 0 25px;
-  height: 50px;
-  border-bottom: solid 1px #1C5170;
-
-  @media (min-width: 768px) and (max-width: 1023px) {
-    margin: 0 100px;
-    height: 75px;
-  }
-
-  @media (min-width: 1024px) {
-    margin: 0 300px;
-    height: 75px;
-  }
-`
-
-const PartyButton = styled.button`
-  height: 50px;
-  border: none;
-  background-color: white;
-  font-size: 18px;
-  font-family: 'Josefin Sans', sans-serif;
-  font-weight: 400;
-
-  &:hover {cursor: pointer; text-decoration: underline;}
-
-  @media (min-width: 768px) and (max-width: 1023px) {
-    font-size: 24px;
-  }
-
-  @media (min-width: 1024px) {
-    font-size: 24px;
-  }
-`
-
-const LoaderContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: calc(100vh - 203px);
-
-  @media (min-width: 768px) and (max-width: 1023px) {
-    height: calc(100vh - 253px);
-  }
-
-  @media (min-width: 1024px) {
-    height: calc(100vh - 253px);
-  }
-  `
-
-const MembersContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  padding: 5px 25px 55px 25px;
-
-  @media (min-width: 768px) and (max-width: 1023px) {
-    padding: 5px 100px 55px 100px;
-  }
-
-  @media (min-width: 1024px) {
-    padding: 5px 280px 55px 280px;
-  }
-  `
-
-export const Members = () => {
+export const MemberList = () => {
 
   const MEMBER_URL = 'http://data.riksdagen.se/personlista/?utformat=json'
-
   const parties = ['S', 'M', 'SD', 'C', 'V', 'KD', 'L', 'MP', '-'] // list of parties, biggest to smallest
 
   const [allMembers, setAllMembers] = useState([]) // contains all members in sort order, the filtering is done on allMembers
-  const [displayedMembers, setDisplayedMembers] = useState([]) // contains either all members or filtered members by party
+  const [displayedMembers, setDisplayedMembers] = useState([]) // contains either all members or filtered members by party, displayedMembers is what is displayed in the browser
   const [loading, setLoading] = useState(true) // decides whether loader should show or not
-
-  const storeMembers = (sortedMembers) => {
-    localStorage.setItem('members', JSON.stringify(sortedMembers))
-  }
-
-  const sortMembers = (memberList) => {
-    const sortedMembers =
-      memberList.sort((a, b) => {
-        if (a.party !== b.party) {
-          return parties.indexOf(a.party) - parties.indexOf(b.party) // sorts in numerical ascending order
-        } else {
-          if (a.sortName < b.sortName) return -1
-          else if (a.sortName > b.sortName) return 1
-          else return 0
-        }
-      })
-    storeMembers(sortedMembers)
-    setAllMembers(sortedMembers)
-    setDisplayedMembers(sortedMembers)
-  }
 
   const filterMembers = (party) => {
     const filteredMembers =
@@ -109,13 +19,34 @@ export const Members = () => {
     setDisplayedMembers(filteredMembers)
   }
 
+  const storeMembers = (sortedMembers) => {
+    localStorage.setItem('storedMembers', JSON.stringify(sortedMembers))
+  }
+
+  const sortMembers = (memberList) => {
+    const sortedMembers =
+      memberList.sort((a, b) => {
+        if (a.party !== b.party) {
+          return parties.indexOf(a.party) - parties.indexOf(b.party)
+        } else {
+          if (a.sortName < b.sortName) return -1
+          else if (a.sortName > b.sortName) return 1
+          else return 0
+        }
+      })
+    storeMembers(sortedMembers) // store in localstorage
+    setAllMembers(sortedMembers) // needed for the filtering
+    setDisplayedMembers(sortedMembers) // decides what to display
+    setLoading(false)
+  }
+
   const getMembers = () => {
 
-    const storedMembers = JSON.parse(localStorage.getItem('members') || '[]')
+    const storedMembers = JSON.parse(localStorage.getItem('storedMembers') || '[]')
 
     if (storedMembers.length > 0) {
-      setAllMembers(storedMembers)
-      setDisplayedMembers(storedMembers)
+      setAllMembers(storedMembers) // needed for the filtering
+      setDisplayedMembers(storedMembers) // decides what to display
       setLoading(false)
     } else {
       fetch(MEMBER_URL)
@@ -133,7 +64,6 @@ export const Members = () => {
               }
             })
           sortMembers(memberList)
-          setLoading(false)
         })
         .catch(err => console.log(err))
     }

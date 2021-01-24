@@ -1,4 +1,5 @@
 body {
   margin: 0;
   color: #173A4F;
+  overflow-y: overlay;
 }
