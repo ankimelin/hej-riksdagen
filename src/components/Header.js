@@ -7,6 +7,14 @@ const MenuContainer = styled.div`
   align-items: center;
   justify-content: space-evenly;
   height: 50px;
+
+  @media (min-width: 768px) and (max-width: 1023px) {
+    margin: 0 100px;
+  }
+  
+  @media (min-width: 1024px) {
+    margin: 0 300px;
+  }
 `
 
 const MenuButton = styled.button`
@@ -19,6 +27,14 @@ const MenuButton = styled.button`
   font-weight: 400;
 
   &:hover {cursor: pointer; text-decoration: underline;}
+
+  @media (min-width: 768px) and (max-width: 1023px) {
+    font-size: 18px;
+  }
+
+  @media (min-width: 1024px) {
+    font-size: 18px;
+  }
 `
 
 const TitleContainer = styled.div`
@@ -44,6 +60,14 @@ const Title = styled.h1`
   font-size: 36px;
   font-family: 'Pacifico', cursive;
   font-weight: 400;
+
+  @media (min-width: 768px) and (max-width: 1023px) {
+    font-size: 48px;
+  }
+
+  @media (min-width: 1024px) {
+    font-size: 48px;
+  }
 `
 
 export const Header = () => {

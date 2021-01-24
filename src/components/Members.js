@@ -4,13 +4,23 @@ import Loader from 'react-loader-spinner'
 
 import { Member } from './Member.js'
 
-const ButtonContainer = styled.div`
+const PartyContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin: 0 25px;
   height: 50px;
   border-bottom: solid 1px #1C5170;
+
+  @media (min-width: 768px) and (max-width: 1023px) {
+    margin: 0 100px;
+    height: 75px;
+  }
+
+  @media (min-width: 1024px) {
+    margin: 0 300px;
+    height: 75px;
+  }
 `
 
 const PartyButton = styled.button`
@@ -22,6 +32,14 @@ const PartyButton = styled.button`
   font-weight: 400;
 
   &:hover {cursor: pointer; text-decoration: underline;}
+
+  @media (min-width: 768px) and (max-width: 1023px) {
+    font-size: 24px;
+  }
+
+  @media (min-width: 1024px) {
+    font-size: 24px;
+  }
 `
 
 const LoaderContainer = styled.div`
@@ -29,33 +47,45 @@ const LoaderContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: calc(100vh - 178px);
+  height: calc(100vh - 203px);
 
   @media (min-width: 768px) and (max-width: 1023px) {
-    height: calc(100vh - 203px);
+    height: calc(100vh - 253px);
   }
 
   @media (min-width: 1024px) {
-    height: calc(100vh - 203px);
+    height: calc(100vh - 253px);
   }
   `
 
-const MemberContainer = styled.div`
+const MembersContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  margin: 5px 25px;
+  padding: 5px 25px 55px 25px;
+
+  @media (min-width: 768px) and (max-width: 1023px) {
+    padding: 5px 100px 55px 100px;
+  }
+
+  @media (min-width: 1024px) {
+    padding: 5px 280px 55px 280px;
+  }
   `
 
 export const Members = () => {
 
   const MEMBER_URL = 'http://data.riksdagen.se/personlista/?utformat=json'
 
-  const parties = ['S', 'M', 'SD', 'C', 'V', 'KD', 'L', 'MP', '-'] // list of parties in the Swedish parliment, biggest to smallest
+  const parties = ['S', 'M', 'SD', 'C', 'V', 'KD', 'L', 'MP', '-'] // list of parties, biggest to smallest
 
-  const [allMembers, setAllMembers] = useState([]) // contains all members in sort order
+  const [allMembers, setAllMembers] = useState([]) // contains all members in sort order, the filtering is done on allMembers
   const [displayedMembers, setDisplayedMembers] = useState([]) // contains either all members or filtered members by party
   const [loading, setLoading] = useState(true) // decides whether loader should show or not
+
+  const storeMembers = (sortedMembers) => {
+    localStorage.setItem('members', JSON.stringify(sortedMembers))
+  }
 
   const sortMembers = (memberList) => {
     const sortedMembers =
@@ -68,6 +98,7 @@ export const Members = () => {
           else return 0
         }
       })
+    storeMembers(sortedMembers)
     setAllMembers(sortedMembers)
     setDisplayedMembers(sortedMembers)
   }
@@ -79,41 +110,50 @@ export const Members = () => {
   }
 
   const getMembers = () => {
-    fetch(MEMBER_URL)
-      .then(res => res.json())
-      .then(json => {
-        const memberList =
-          json.personlista.person.map(member => {
-            return {
-              id: member.sourceid,
-              firstName: member.tilltalsnamn,
-              lastName: member.efternamn,
-              sortName: member.sorteringsnamn,
-              image: member.bild_url_192,
-              party: member.parti,
-            }
-          })
-        sortMembers(memberList)
-        setLoading(false)
-      })
-      .catch(err => console.log(err))
+
+    const storedMembers = JSON.parse(localStorage.getItem('members') || '[]')
+
+    if (storedMembers.length > 0) {
+      setAllMembers(storedMembers)
+      setDisplayedMembers(storedMembers)
+      setLoading(false)
+    } else {
+      fetch(MEMBER_URL)
+        .then(res => res.json())
+        .then(json => {
+          const memberList =
+            json.personlista.person.map(member => {
+              return {
+                id: member.sourceid,
+                firstName: member.tilltalsnamn,
+                lastName: member.efternamn,
+                sortName: member.sorteringsnamn,
+                image: member.bild_url_192,
+                party: member.parti,
+              }
+            })
+          sortMembers(memberList)
+          setLoading(false)
+        })
+        .catch(err => console.log(err))
+    }
   }
 
   useEffect(getMembers, [])
 
   return (
     <>
-      <ButtonContainer>
+      <PartyContainer>
         <PartyButton onClick={() => setDisplayedMembers(allMembers)}>
           Alla
           </PartyButton>
         {parties.map(party => {
           return party !== '-' &&
-            <PartyButton onClick={() => filterMembers(party)}>
+            <PartyButton key={party} onClick={() => filterMembers(party)}>
               {party}
             </PartyButton>
         })}
-      </ButtonContainer>
+      </PartyContainer>
       {loading &&
         <LoaderContainer>
           <Loader
@@ -121,34 +161,14 @@ export const Members = () => {
             color='#1C5170' />
         </LoaderContainer>}
       {!loading &&
-        <MemberContainer>
-          {/* <Member />
-          <Member />
-          <Member />
-          <Member />
-          <Member />
-          <Member />
-          <Member />
-          <Member />
-          <Member />
-          <Member />
-          <Member />
-          <Member />
-          <Member />
-          <Member />
-          <Member />
-          <Member />
-          <Member />
-          <Member />
-          <Member />
-          <Member /> */}
+        <MembersContainer>
           {displayedMembers.map(member => {
             return <Member
               key={member.id}
               {...member}
             />
           })}
-        </MemberContainer>}
+        </MembersContainer>}
     </>
   )
 }
