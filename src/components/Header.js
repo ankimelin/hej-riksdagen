@@ -1,11 +1,61 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+import styled from 'styled-components'
+
+const MenuContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 50px;
+`
+
+const MenuButton = styled.button`
+  margin: 0;
+  padding: 0;
+  border: none;
+  background-color: white;
+  font-size: 14px;
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 400;
+
+  &:hover {cursor: pointer; text-decoration: underline;}
+`
+
+const TitleContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 75px;
+  border-top: 1px solid #1C5170;
+  border-bottom: 1px solid #1C5170;
+
+  @media (min-width: 768px) and (max-width: 1023px) {
+    height: 100px;
+  }
+
+  @media (min-width: 1024px) {
+    height: 100px;
+  }
+`
+
+const Title = styled.h1`
+  margin: 0;
+  padding: 0;
+  font-size: 36px;
+  font-family: 'Pacifico', cursive;
+  font-weight: 400;
+`
 
 export const Header = () => {
   return (
     <>
-      <h3>Vi som jobbar här</h3>
-      <h3>Ställ en fråga</h3>
-      <h1>hej riksdagen</h1>
+      <MenuContainer>
+        <Link style={{ textDecoration: 'none' }} to='/vi-som-jobbar-har'><MenuButton>Vi som jobbar här</MenuButton></Link>
+        <Link style={{ textDecoration: 'none' }} to='/stall-en-fraga'><MenuButton>Ställ en fråga</MenuButton></Link>
+      </MenuContainer >
+      <TitleContainer>
+        <Title>hej riksdagen</Title>
+      </TitleContainer>
     </>
   )
 }
