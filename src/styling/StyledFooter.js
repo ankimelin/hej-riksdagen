@@ -31,8 +31,6 @@ export const FooterText = styled.h1`
   font-family: 'Josefin Sans', sans-serif;
   font-weight: 400;
 
-  &:hover {cursor: pointer; text-decoration: underline;}
-
   @media (min-width: 768px) and (max-width: 1023px) {
     font-size: 18px;
   }
