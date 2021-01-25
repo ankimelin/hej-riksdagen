@@ -7,10 +7,12 @@ export const PartyContainer = styled.div`
   margin: 0 25px;
   border-bottom: solid 1px #1C5170;
   height: 50px;
+  max-width: 617px; 
 
   @media (min-width: 768px) and (max-width: 1023px) {
     margin: 0 100px;
     height: 75px;
+    max-width: 824px;
   }
 
   @media (min-width: 1024px) {

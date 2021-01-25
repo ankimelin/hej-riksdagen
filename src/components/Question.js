@@ -69,7 +69,7 @@ export const Question = () => {
         <AnswerContainer>
           <AnswerText>Tack för din fråga {name}!</AnswerText>
           <Button className='question-button' onClick={goToQuestionForm}>
-            Ställ en till
+            Ställ en till fråga
             </Button>
         </AnswerContainer>}
     </QuestionContainer>
