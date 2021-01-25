@@ -1,4 +1,4 @@
-# hej riksdagen
+# Project description
 Site listing the Swedish parliment, where you can filter on party, and post a question.
 
 The madeup purpose: the Swedish partliment wants to get closer to the younger population in Sweden, by presenting themselves in a personal manner, and opening up for anyone to ask anything.
