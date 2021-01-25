@@ -6,7 +6,7 @@ import { PartyContainer, PartyButton, LoaderContainer, MembersContainer } from '
 
 export const MemberList = () => {
 
-  const MEMBER_URL = 'http://data.riksdagen.se/personlista/?utformat=json'
+  const MEMBER_URL = 'https://data.riksdagen.se/personlista/?utformat=json'
   const parties = ['S', 'M', 'SD', 'C', 'V', 'KD', 'L', 'MP', '-'] // list of parties, biggest to smallest
 
   const [allMembers, setAllMembers] = useState([]) // contains all members in sort order, the filtering is done on allMembers
