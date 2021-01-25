@@ -22,4 +22,4 @@ Styling: indicate which page the user is on in the top menu, indicate which part
 Behind the scenes: add backend to which the question is posted (MondoDB, Express.js, Mongoose), breakout smaller components.
 
 # View it live
-https://hej-riksdagen.netlify.app/vi-som-jobbar-har
+https://hej-riksdagen.netlify.app/
