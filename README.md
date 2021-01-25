@@ -8,7 +8,7 @@ https://www.figma.com/file/swUecVQc7KynwOzfhxzOda/hej-riksdagen?node-id=28%3A17
 
 Trello board:
 https://trello.com/b/DkTWo4Np/hej-riksdagen
-(I can invite you through e-mail)
+(invitation by e-mail)
 
 ## Tech 
 JavaScript and React. 
