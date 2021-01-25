@@ -11,9 +11,7 @@ https://trello.com/b/DkTWo4Np/hej-riksdagen
 (I can invite you through e-mail)
 
 # Tech 
-JavaScript, React, React Router Dom.
-
-First time using localStorage to store API result.
+JavaScript and React. First time using localStorage to store API result.
 
 # Future features
 Content: add About us and Not Found page.
