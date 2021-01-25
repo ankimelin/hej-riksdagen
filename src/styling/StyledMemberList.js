@@ -20,6 +20,8 @@ export const PartyContainer = styled.div`
 `
 
 export const PartyButton = styled.button`
+  margin: 0;
+  padding: 0;
   border: none;
   height: 50px;   
   background-color: white;
