@@ -1,21 +1,16 @@
 import React from 'react'
-import styled from 'styled-components'
 
 import { Header } from '../components/Header'
 import { MemberList } from '../components/MemberList'
 import { Footer } from '../components/Footer'
-
-const MainMembersContainer = styled.div`
-  position: relative;
-  min-height: 100vh;
-`
+import { MainContainer } from '../styling/StyledRoutes'
 
 export const WeWhoWorkHere = () => {
   return (
-    <MainMembersContainer>
+    <MainContainer>
       <Header />
       <MemberList />
       <Footer />
-    </MainMembersContainer>
+    </MainContainer>
   )
 }
