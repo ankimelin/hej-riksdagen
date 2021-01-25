@@ -19,7 +19,7 @@ First time using localStorage to store API result.
 https://hej-riksdagen.netlify.app/
 
 ## Future features
-Content: add About us and Not Found page.
+Content: add About us, Not Found and Member details page.
 
 Functionality: add interactivity on the member cards (open e-mail when clicking on member), make it possible to filter on several parties together, add name search on parliment members.
 
