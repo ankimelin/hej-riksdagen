@@ -91,15 +91,6 @@ export const Button = styled.button`
   &.clean-button {
     background-color: #F2F7FB;
     color: #173A4F;
-    &:hover {
-      color: #173A4F;  
-    }
-  }
-
-  &:hover {
-    background-color: #FCFF5C;
-    color: #173A4F;  
-    cursor: pointer;
   }
 
   @media (min-width: 768px) and (max-width: 1023px) {
@@ -108,6 +99,12 @@ export const Button = styled.button`
 
   @media (min-width: 1024px) {
     font-size: 18px;
+
+    &:hover {
+      background-color: #FCFF5C;
+      color: #173A4F;  
+      cursor: pointer;
+    }
   }
 `
 
