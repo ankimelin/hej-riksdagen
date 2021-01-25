@@ -12,6 +12,7 @@ https://trello.com/b/DkTWo4Np/hej-riksdagen
 
 # Tech 
 JavaScript and React. 
+
 First time using localStorage to store API result.
 
 # Future features
