@@ -4,9 +4,11 @@ Site listing the Swedish parliment, where you can filter on party, and post a qu
 The madeup purpose: the Swedish partliment wants to get closer to the younger population in Sweden, by presenting themselves in a personal manner, and opening up for anyone to ask anything.
 
 Figma sketch:
+
 https://www.figma.com/file/swUecVQc7KynwOzfhxzOda/hej-riksdagen?node-id=28%3A17
 
 Trello board:
+
 https://trello.com/b/DkTWo4Np/hej-riksdagen
 (I can invite you through e-mail)
 
