@@ -24,5 +24,8 @@ Styling: indicate which page the user is on in the top menu, indicate which part
 
 Behind the scenes: add backend to which the question is posted (MondoDB, Express.js, Mongoose), breakout smaller components.
 
+# Bug fixes
+Styling on mobile device is off, when looking at iPhone 8 IRL (works in dev tools).
+
 # View it live
 https://hej-riksdagen.netlify.app/
