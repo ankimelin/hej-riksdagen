@@ -6,24 +6,24 @@ import { PartyContainer, PartyButton, LoaderContainer, MembersContainer } from '
 
 export const MemberList = () => {
 
-  const MEMBER_URL = 'https://data.riksdagen.se/personlista/?utformat=json'
+  const PARLIMENT_MEMBERS_URL = 'https://data.riksdagen.se/personlista/?utformat=json'
   const parties = ['S', 'M', 'SD', 'C', 'V', 'KD', 'L', 'MP', '-'] // list of parties, biggest to smallest
 
-  const [allMembers, setAllMembers] = useState([]) // contains all members in sort order, the filtering is done on allMembers
-  const [displayedMembers, setDisplayedMembers] = useState([]) // contains either all members or filtered members by party, displayedMembers is what is displayed in the browser
+  const [allMembers, setAllMembers] = useState([]) // contains all members in sort order
+  const [displayedMembers, setDisplayedMembers] = useState([]) // this is what is displayed in the browser
   const [loading, setLoading] = useState(true) // decides whether loader should show or not
 
-  const filterMembers = (party) => {
+  const filterMembers = (party) => { // filter members on party
     const filteredMembers =
       allMembers.filter(member => member.party === party)
     setDisplayedMembers(filteredMembers)
   }
 
-  const storeMembers = (sortedMembers) => {
+  const storeMembers = (sortedMembers) => { // store members in localstorage
     localStorage.setItem('storedMembers', JSON.stringify(sortedMembers))
   }
 
-  const sortMembers = (memberList) => {
+  const sortMembers = (memberList) => { // sort members on 1. party and 2. sortName
     const sortedMembers =
       memberList.sort((a, b) => {
         if (a.party !== b.party) {
@@ -34,22 +34,22 @@ export const MemberList = () => {
           else return 0
         }
       })
-    storeMembers(sortedMembers) // store in localstorage
-    setAllMembers(sortedMembers) // needed for the filtering
-    setDisplayedMembers(sortedMembers) // decides what to display
+    storeMembers(sortedMembers)
+    setAllMembers(sortedMembers)
+    setDisplayedMembers(sortedMembers)
     setLoading(false)
   }
 
-  const getMembers = () => {
+  const getMembers = () => { // gets members from localstorage or API
 
-    const storedMembers = JSON.parse(localStorage.getItem('storedMembers') || '[]')
+    const storedMembers = JSON.parse(localStorage.getItem('storedMembers') || '[]') // gets members if stored in localstorage, otherwise sets storedMembers to an empty array
 
-    if (storedMembers.length > 0) {
-      setAllMembers(storedMembers) // needed for the filtering
-      setDisplayedMembers(storedMembers) // decides what to display
+    if (storedMembers.length > 0) { // if there are stored members in the localstorage
+      setAllMembers(storedMembers)
+      setDisplayedMembers(storedMembers)
       setLoading(false)
-    } else {
-      fetch(MEMBER_URL)
+    } else { // if there are no stored members in the localstorage
+      fetch(PARLIMENT_MEMBERS_URL)
         .then(res => res.json())
         .then(json => {
           const memberList =
@@ -69,7 +69,7 @@ export const MemberList = () => {
     }
   }
 
-  useEffect(getMembers, [])
+  useEffect(getMembers, []) // gets members when component is mounted
 
   return (
     <>

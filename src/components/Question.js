@@ -4,22 +4,22 @@ import { QuestionContainer, FormContainer, InputLabel, InputArea, TextArea, Butt
 
 export const Question = () => {
 
-  const [name, setName] = useState('')
-  const [mail, setMail] = useState('')
-  const [question, setQuestion] = useState('')
-  const [questionSent, setQuestionSent] = useState(false)
+  const [name, setName] = useState('') // contains name
+  const [email, setEmail] = useState('') // contains email
+  const [question, setQuestion] = useState('') // contains question content
+  const [questionSent, setQuestionSent] = useState(false) // decides whether question or answer should be displayed
 
-  const sendQuestion = () => {
+  const sendQuestion = () => { // go to display answer
     setQuestionSent(true)
   }
 
-  const cleanQuestionForm = () => {
+  const cleanQuestionForm = () => { // cleares question form
     setName('')
-    setMail('')
+    setEmail('')
     setQuestion('')
   }
 
-  const goToQuestionForm = () => {
+  const goToQuestionForm = () => { // go back to question
     cleanQuestionForm()
     setQuestionSent(false)
   }
@@ -45,8 +45,8 @@ export const Question = () => {
           <InputArea
             required
             type='email'
-            value={mail}
-            onChange={event => setMail(event.target.value)}
+            value={email}
+            onChange={event => setEmail(event.target.value)}
           >
           </InputArea>
           <InputLabel>
