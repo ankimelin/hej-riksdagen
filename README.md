@@ -26,6 +26,3 @@ Functionality: add interactivity on the member cards (open e-mail when clicking 
 Styling: indicate which page the user is on in the top menu, indicate which party filter the user has clicked on, indicate which party a member belongs to.
 
 Behind the scenes: add backend to which the question is posted (MondoDB, Express.js, Mongoose), breakout smaller components.
-
-## Bug fixes
-Styling on mobile device is off, when looking at iPhone 8 IRL (works in dev tools).
