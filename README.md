@@ -11,7 +11,7 @@ https://trello.com/b/DkTWo4Np/hej-riksdagen
 (I can invite you through e-mail)
 
 # Tech 
-JavaScript, React, React Router Dom, React Loader Spinner, Styled Components.
+JavaScript, React, React Router Dom.
 
 First time using localStorage to store API result.
 
