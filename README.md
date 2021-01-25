@@ -1,4 +1,4 @@
-# Project description
+# hej riksdagen
 Site listing the Swedish parliment, where you can filter on party, and post a question.
 
 The madeup purpose: the Swedish partliment wants to get closer to the younger population in Sweden, by presenting themselves in a personal manner, and opening up for anyone to ask anything.
@@ -10,10 +10,13 @@ Trello board:
 https://trello.com/b/DkTWo4Np/hej-riksdagen
 (I can invite you through e-mail)
 
-# Tech 
+## Tech 
 JavaScript and React. 
 
 First time using localStorage to store API result.
+
+## View it live
+https://hej-riksdagen.netlify.app/
 
 ## Future features
 Content: add About us and Not Found page.
@@ -26,6 +29,3 @@ Behind the scenes: add backend to which the question is posted (MondoDB, Express
 
 ## Bug fixes
 Styling on mobile device is off, when looking at iPhone 8 IRL (works in dev tools).
-
-# View it live
-https://hej-riksdagen.netlify.app/
