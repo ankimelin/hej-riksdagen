@@ -60,13 +60,13 @@ export const MembersContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  padding: 5px 25px 55px 25px;
+  padding: 10px 25px 60px 25px;
 
   @media (min-width: 768px) and (max-width: 1023px) {
-    padding: 5px 100px 55px 100px;
+    padding: 10px 100px 60px 100px;
   }
 
   @media (min-width: 1024px) {
-    padding: 5px 280px 55px 280px;
+    padding: 10px 300px 60px 300px;
   }
   `
