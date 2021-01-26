@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Loader from 'react-loader-spinner'
 
 import { Member } from './Member'
-import { PartyContainer, PartyButton, LoaderContainer, MembersContainer } from '../styling/StyledMemberList'
+import { FilterContainer, FilterButton, LoaderContainer, MembersContainer } from '../styling/StyledMemberList'
 
 export const MemberList = () => {
 
@@ -73,17 +73,17 @@ export const MemberList = () => {
 
   return (
     <>
-      <PartyContainer>
-        <PartyButton onClick={() => setDisplayedMembers(allMembers)}>
+      <FilterContainer>
+        <FilterButton onClick={() => setDisplayedMembers(allMembers)}>
           Alla
-          </PartyButton>
+          </FilterButton>
         {parties.map(party => {
           return party !== '-' &&
-            <PartyButton key={party} onClick={() => filterMembers(party)}>
+            <FilterButton key={party} onClick={() => filterMembers(party)}>
               {party}
-            </PartyButton>
+            </FilterButton>
         })}
-      </PartyContainer>
+      </FilterContainer>
       {loading &&
         <LoaderContainer>
           <Loader

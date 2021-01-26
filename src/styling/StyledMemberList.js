@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const PartyContainer = styled.div`
+export const FilterContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -19,7 +19,7 @@ export const PartyContainer = styled.div`
   }
 `
 
-export const PartyButton = styled.button`
+export const FilterButton = styled.button`
   margin: 0;
   padding: 0;
   border: none;
