@@ -7,8 +7,8 @@ export const Header = () => {
   return (
     <>
       <MenuContainer>
-        <Link style={{ textDecoration: 'none' }} to='/vi-som-jobbar-har'><MenuButton>Vi som jobbar här</MenuButton></Link>
-        <Link style={{ textDecoration: 'none' }} to='/stall-en-fraga'><MenuButton>Ställ en fråga</MenuButton></Link>
+        <Link to='/vi-som-jobbar-har' style={{ textDecoration: 'none' }}><MenuButton>Vi som jobbar här</MenuButton></Link>
+        <Link to='/stall-en-fraga' style={{ textDecoration: 'none' }}><MenuButton>Ställ en fråga</MenuButton></Link>
       </MenuContainer >
       <TitleContainer>
         <TitleText>hej riksdagen</TitleText>

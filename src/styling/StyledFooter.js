@@ -7,9 +7,9 @@ export const FooterContainer = styled.div`
   align-items: center;
   justify-content: center;
   margin: 0 25px;
+  border-top: solid 1px #1C5170;
   height: 50px;
   width: calc(100% - 50px);
-  border-top: solid 1px #1C5170;
 
   @media (min-width: 768px) and (max-width: 1023px) {
     width: calc(100% - 200px);
