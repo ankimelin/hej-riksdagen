@@ -12,11 +12,13 @@ export const MemberList = () => {
   const [allMembers, setAllMembers] = useState([]) // contains all members in sort order
   const [displayedMembers, setDisplayedMembers] = useState([]) // this is what is displayed in the browser
   const [loading, setLoading] = useState(true) // decides whether loader should show or not
+  const [selected, setSelected] = useState('')
 
   const filterMembers = (party) => { // filter members on party
     const filteredMembers =
       allMembers.filter(member => member.party === party)
     setDisplayedMembers(filteredMembers)
+    setSelected(party)
   }
 
   const storeMembers = (sortedMembers) => { // store members in localstorage
@@ -37,6 +39,7 @@ export const MemberList = () => {
     storeMembers(sortedMembers)
     setAllMembers(sortedMembers)
     setDisplayedMembers(sortedMembers)
+    setSelected('alla')
     setLoading(false)
   }
 
@@ -47,6 +50,7 @@ export const MemberList = () => {
     if (storedMembers.length > 0) { // if there are stored members in the localstorage
       setAllMembers(storedMembers)
       setDisplayedMembers(storedMembers)
+      setSelected('alla')
       setLoading(false)
     } else { // if there are no stored members in the localstorage
       fetch(PARLIMENT_MEMBERS_URL)
@@ -74,22 +78,37 @@ export const MemberList = () => {
   return (
     <>
       <FilterContainer>
-        <FilterButton onClick={() => setDisplayedMembers(allMembers)}>Alla</FilterButton>
+        <FilterButton
+          className={selected === 'alla' ? 'active' : null}
+          onClick={() => {
+            setDisplayedMembers(allMembers)
+            setSelected('alla')
+          }}>
+          Alla
+        </FilterButton>
         {parties.map(party => {
           return party !== '-' &&
-            <FilterButton key={party} onClick={() => filterMembers(party)}>{party}</FilterButton>
+            <FilterButton key={party}
+              className={selected === party ? 'active' : null}
+              onClick={() => filterMembers(party)}>
+              {party}
+            </FilterButton>
         })}
       </FilterContainer>
-      {loading &&
+      {
+        loading &&
         <LoaderContainer>
           <Loader type='TailSpin' color='#1C5170' />
-        </LoaderContainer>}
-      {!loading &&
+        </LoaderContainer>
+      }
+      {
+        !loading &&
         <MembersContainer>
           {displayedMembers.map(member => {
             return <Member key={member.id} {...member} />
           })}
-        </MembersContainer>}
+        </MembersContainer>
+      }
     </>
   )
 }

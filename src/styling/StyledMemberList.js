@@ -31,6 +31,9 @@ export const FilterButton = styled.button`
 
   &:hover {
     cursor: pointer; 
+  }
+
+  &.active {
     text-decoration: underline;
   }
 
