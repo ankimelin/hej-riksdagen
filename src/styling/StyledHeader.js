@@ -29,11 +29,10 @@ export const MenuLink = styled(NavLink)`
 
   &:hover {
     cursor: pointer; 
-    text-decoration: underline;
   }
 
   &.active {
-    color: red;
+    text-decoration: underline;
   }
 
   @media (min-width: 768px) and (max-width: 1023px) {
