@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { NavLink } from 'react-router-dom'
 
 export const MenuContainer = styled.div`
   display: flex;
@@ -15,14 +16,16 @@ export const MenuContainer = styled.div`
   }
 `
 
-export const MenuButton = styled.button`
+export const MenuLink = styled(NavLink)`
   margin: 0;
   padding: 5px;
   border: none;
   background-color: white;
+  text-decoration: none;
   font-size: 14px;
   font-family: 'Josefin Sans', sans-serif;
   font-weight: 400;
+  color: black;
 
   &:hover {
     cursor: pointer; 
@@ -30,7 +33,7 @@ export const MenuButton = styled.button`
   }
 
   &.active {
-    font-weight: 600;
+    color: red;
   }
 
   @media (min-width: 768px) and (max-width: 1023px) {
