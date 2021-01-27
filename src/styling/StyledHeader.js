@@ -17,14 +17,21 @@ export const MenuContainer = styled.div`
 
 export const MenuButton = styled.button`
   margin: 0;
-  padding: 0;
+  padding: 5px;
   border: none;
   background-color: white;
   font-size: 14px;
   font-family: 'Josefin Sans', sans-serif;
   font-weight: 400;
 
-  &:hover {cursor: pointer; text-decoration: underline;}
+  &:hover {
+    cursor: pointer; 
+    text-decoration: underline;
+  }
+
+  &.active {
+    font-weight: 600;
+  }
 
   @media (min-width: 768px) and (max-width: 1023px) {
     font-size: 18px;
@@ -58,6 +65,7 @@ export const TitleText = styled.h1`
   font-size: 36px;
   font-family: 'Pacifico', cursive;
   font-weight: 400;
+  color: #1C5170;
 
   @media (min-width: 768px) and (max-width: 1023px) {
     font-size: 48px;

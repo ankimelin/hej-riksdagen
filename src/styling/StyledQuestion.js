@@ -82,7 +82,7 @@ export const Button = styled.button`
   padding: 10px;
   border: none;
   width: 100%;
-  background-color: #173A4F;
+  background-color: #1C5170;
   font-size: 14px;
   font-family: 'Josefin Sans', sans-serif;
   font-weight: 600;

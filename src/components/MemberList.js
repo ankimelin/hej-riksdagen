@@ -74,29 +74,20 @@ export const MemberList = () => {
   return (
     <>
       <FilterContainer>
-        <FilterButton onClick={() => setDisplayedMembers(allMembers)}>
-          Alla
-          </FilterButton>
+        <FilterButton onClick={() => setDisplayedMembers(allMembers)}>Alla</FilterButton>
         {parties.map(party => {
           return party !== '-' &&
-            <FilterButton key={party} onClick={() => filterMembers(party)}>
-              {party}
-            </FilterButton>
+            <FilterButton key={party} onClick={() => filterMembers(party)}>{party}</FilterButton>
         })}
       </FilterContainer>
       {loading &&
         <LoaderContainer>
-          <Loader
-            type='TailSpin'
-            color='#1C5170' />
+          <Loader type='TailSpin' color='#1C5170' />
         </LoaderContainer>}
       {!loading &&
         <MembersContainer>
           {displayedMembers.map(member => {
-            return <Member
-              key={member.id}
-              {...member}
-            />
+            return <Member key={member.id} {...member} />
           })}
         </MembersContainer>}
     </>

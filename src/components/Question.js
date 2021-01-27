@@ -27,50 +27,20 @@ export const Question = () => {
   return (
     <QuestionContainer>
       {!questionSent &&
-        <FormContainer onSubmit={sendQuestion} >
-          <InputLabel>
-            Namn
-        </InputLabel>
-          <InputArea
-            required
-            minLength='2'
-            maxLength='20'
-            value={name}
-            onChange={event => setName(event.target.value)}
-          >
-          </InputArea>
-          <InputLabel>
-            Mejl
-        </InputLabel>
-          <InputArea
-            required
-            type='email'
-            value={email}
-            onChange={event => setEmail(event.target.value)}
-          >
-          </InputArea>
-          <InputLabel>
-            Fråga
-        </InputLabel>
-          <TextArea
-            required
-            value={question}
-            onChange={event => setQuestion(event.target.value)}
-          >
-          </TextArea>
-          <Button className='send-button' type='submit'>
-            Skicka
-        </Button>
-          <Button className='clean-button' onClick={cleanQuestionForm}>
-            Rensa
-        </Button>
+        <FormContainer onSubmit={sendQuestion}>
+          <InputLabel>Namn</InputLabel>
+          <InputArea required minLength='2' maxLength='20' value={name} onChange={event => setName(event.target.value)}></InputArea>
+          <InputLabel>Mejl</InputLabel>
+          <InputArea required type='email' value={email} onChange={event => setEmail(event.target.value)}></InputArea>
+          <InputLabel>Fråga</InputLabel>
+          <TextArea required value={question} onChange={event => setQuestion(event.target.value)}></TextArea>
+          <Button className='send-button' type='submit'>Skicka</Button>
+          <Button className='clean-button' onClick={cleanQuestionForm}>Rensa</Button>
         </FormContainer>}
       {questionSent &&
         <AnswerContainer>
           <AnswerText>Tack för din fråga {name}!</AnswerText>
-          <Button className='question-button' onClick={goToQuestionForm}>
-            Ställ en till fråga
-            </Button>
+          <Button className='question-button' onClick={goToQuestionForm}>Ställ en till fråga</Button>
         </AnswerContainer>}
     </QuestionContainer>
   )
