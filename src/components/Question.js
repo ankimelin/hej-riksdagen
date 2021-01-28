@@ -1,26 +1,31 @@
 import React, { useState } from 'react'
 
-import { QuestionContainer, FormContainer, InputLabel, InputArea, TextArea, Button, AnswerContainer, AnswerText } from '../styling/StyledQuestion'
+import { QuestionContainer, FormContainer, InputLabel, InputArea, TextArea, QuestionButton, AnswerContainer, AnswerText }
+  from '../styling/StyledQuestion'
 
 export const Question = () => {
 
-  const [name, setName] = useState('') // contains name
-  const [email, setEmail] = useState('') // contains email
-  const [question, setQuestion] = useState('') // contains question content
-  const [questionSent, setQuestionSent] = useState(false) // decides whether question or answer should be displayed
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [question, setQuestion] = useState('')
+  // decides whether question form or answer should be displayed
+  const [questionSent, setQuestionSent] = useState(false)
 
-  const sendQuestion = () => { // go to display answer
+  /** goes to answer */
+  const sendQuestion = () => {
     setQuestionSent(true)
   }
 
-  const cleanQuestionForm = () => { // cleares question form
+  /** cleares question form */
+  const clearQuestionForm = () => {
     setName('')
     setEmail('')
     setQuestion('')
   }
 
-  const goToQuestionForm = () => { // go back to question
-    cleanQuestionForm()
+  /** goes back to question */
+  const goToQuestionForm = () => {
+    clearQuestionForm()
     setQuestionSent(false)
   }
 
@@ -29,18 +34,45 @@ export const Question = () => {
       {!questionSent &&
         <FormContainer onSubmit={sendQuestion}>
           <InputLabel>Namn</InputLabel>
-          <InputArea required minLength='2' maxLength='20' value={name} onChange={event => setName(event.target.value)}></InputArea>
+          <InputArea
+            required
+            minLength='2'
+            maxLength='20'
+            value={name}
+            onChange={event => setName(event.target.value)}>
+          </InputArea>
           <InputLabel>Mejl</InputLabel>
-          <InputArea required type='email' value={email} onChange={event => setEmail(event.target.value)}></InputArea>
+          <InputArea
+            required
+            type='email'
+            value={email}
+            onChange={event => setEmail(event.target.value)}>
+          </InputArea>
           <InputLabel>Fråga</InputLabel>
-          <TextArea required value={question} onChange={event => setQuestion(event.target.value)}></TextArea>
-          <Button className='send-button' type='submit'>Skicka</Button>
-          <Button className='clean-button' onClick={cleanQuestionForm}>Rensa</Button>
+          <TextArea
+            required
+            value={question}
+            onChange={event => setQuestion(event.target.value)}>
+          </TextArea>
+          <QuestionButton
+            className='send-button'
+            type='submit'>
+            Skicka
+            </QuestionButton>
+          <QuestionButton
+            className='clear-button'
+            onClick={clearQuestionForm}>
+            Rensa
+            </QuestionButton>
         </FormContainer>}
       {questionSent &&
         <AnswerContainer>
           <AnswerText>Tack för din fråga {name}!</AnswerText>
-          <Button className='question-button' onClick={goToQuestionForm}>Ställ en till fråga</Button>
+          <QuestionButton
+            className='question-button'
+            onClick={goToQuestionForm}>
+            Ställ en till fråga
+            </QuestionButton>
         </AnswerContainer>}
     </QuestionContainer>
   )

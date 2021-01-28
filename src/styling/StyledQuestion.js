@@ -13,7 +13,7 @@ export const FormContainer = styled.form`
   padding: 50px;
 
   @media (min-width: 768px) and (max-width: 1023px) {
-    padding: 75px 200px;
+    padding: 75px 225px;
   }
 
   @media (min-width: 1024px) {
@@ -77,7 +77,7 @@ export const TextArea = styled.textarea`
   }
 `
 
-export const Button = styled.button`
+export const QuestionButton = styled.button`
   margin-top: 25px;
   padding: 10px;
   border: none;
@@ -88,7 +88,7 @@ export const Button = styled.button`
   font-weight: 600;
   color: #F2F7FB;
 
-  &.clean-button {
+  &.clear-button {
     background-color: #F2F7FB;
     color: #173A4F;
   }
