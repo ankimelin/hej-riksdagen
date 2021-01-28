@@ -28,7 +28,7 @@ export const MemberList = () => {
     setSelected(party)
   }
 
-  /** stores members in localstorage */
+  /** stores members in sessionStorage */
   const storeMembers = (sortedMembers) => {
     sessionStorage.setItem('storedMembers', JSON.stringify(sortedMembers))
   }
@@ -53,17 +53,17 @@ export const MemberList = () => {
     setLoading(false)
   }
 
-  /** gets members from localstorage or API */
+  /** gets members from sessionStorage or API */
   const getMembers = () => {
-    // gets members if stored in localstorage, otherwise sets storedMembers to an empty array
+    // gets members if stored in sessionStorage, otherwise sets storedMembers to an empty array
     const storedMembers = JSON.parse(sessionStorage.getItem('storedMembers') || '[]')
 
-    // if there are stored members in the localstorage
+    // if there are stored members in the sessionStorage
     if (storedMembers.length > 0) {
       setAllMembers(storedMembers)
       setDisplayedMembers(storedMembers)
       setLoading(false)
-      // if there are no stored members in the localstorage
+      // if there are no stored members in the sesionStorage
     } else {
       fetch(PARLIMENT_MEMBERS_URL)
         .then(res => res.json())
