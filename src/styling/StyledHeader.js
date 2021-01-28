@@ -41,6 +41,10 @@ export const MenuLink = styled(NavLink)`
 
   @media (min-width: 1024px) {
     font-size: 18px;
+
+    &:focus {
+      outline: 2px solid orange;  
+    }
   }
 `
 

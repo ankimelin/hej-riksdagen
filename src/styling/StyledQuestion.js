@@ -54,6 +54,10 @@ export const InputArea = styled.input`
   @media (min-width: 1024px) {
     height: 35px;
     font-size: 14px;
+
+    &:focus {
+      outline: 2px solid orange;  
+    }
   }
 `
 
@@ -74,6 +78,10 @@ export const TextArea = styled.textarea`
   @media (min-width: 1024px) {
     height: 100px;
     font-size: 14px;
+
+    &:focus {
+      outline: 2px solid orange;  
+    }
   }
 `
 
@@ -104,6 +112,10 @@ export const QuestionButton = styled.button`
       background-color: #FCFF5C;
       color: #173A4F;  
       cursor: pointer;
+    }
+
+    &:focus {
+      outline: 2px solid orange;  
     }
   }
 `

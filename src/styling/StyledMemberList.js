@@ -43,6 +43,10 @@ export const FilterButton = styled.button`
 
   @media (min-width: 1024px) {
     font-size: 24px;
+
+    &:focus {
+      outline: 2px solid orange;  
+    }
   }
 `
 
