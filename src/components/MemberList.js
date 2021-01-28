@@ -30,7 +30,7 @@ export const MemberList = () => {
 
   /** stores members in localstorage */
   const storeMembers = (sortedMembers) => {
-    localStorage.setItem('storedMembers', JSON.stringify(sortedMembers))
+    sessionStorage.setItem('storedMembers', JSON.stringify(sortedMembers))
   }
 
   /** sorts members on 1. party and 2. sortname */
@@ -55,9 +55,8 @@ export const MemberList = () => {
 
   /** gets members from localstorage or API */
   const getMembers = () => {
-
     // gets members if stored in localstorage, otherwise sets storedMembers to an empty array
-    const storedMembers = JSON.parse(localStorage.getItem('storedMembers') || '[]')
+    const storedMembers = JSON.parse(sessionStorage.getItem('storedMembers') || '[]')
 
     // if there are stored members in the localstorage
     if (storedMembers.length > 0) {
