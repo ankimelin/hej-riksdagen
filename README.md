@@ -13,7 +13,7 @@ https://trello.com/b/DkTWo4Np/hej-riksdagen
 ## Tech 
 JavaScript and React. 
 
-First time using localStorage to store API result.
+First time using sessionStorage to store API result.
 
 ## View it live
 https://hej-riksdagen.netlify.app/
