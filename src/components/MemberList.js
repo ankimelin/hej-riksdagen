@@ -18,14 +18,14 @@ export const MemberList = () => {
   // decides whether loader should show or not
   const [loading, setLoading] = useState(true)
   // decides which filter button to style as active
-  const [selected, setSelected] = useState('alla')
+  const [selectedFilter, setSelectedFilter] = useState('alla')
 
   /** filters members on party */
   const filterMembers = (party) => {
     const filteredMembers =
       allMembers.filter(member => member.party === party)
     setDisplayedMembers(filteredMembers)
-    setSelected(party)
+    setSelectedFilter(party)
   }
 
   /** stores members in sessionStorage */
@@ -92,17 +92,17 @@ export const MemberList = () => {
     <>
       <FilterContainer>
         <FilterButton
-          className={selected === 'alla' ? 'active' : null}
+          className={selectedFilter === 'alla' ? 'active' : null}
           onClick={() => {
             setDisplayedMembers(allMembers)
-            setSelected('alla')
+            setSelectedFilter('alla')
           }}>
           Alla
         </FilterButton>
         {parties.map(party => {
           return party !== '-' &&
             <FilterButton key={party}
-              className={selected === party ? 'active' : null}
+              className={selectedFilter === party ? 'active' : null}
               onClick={() => filterMembers(party)}>
               {party}
             </FilterButton>
