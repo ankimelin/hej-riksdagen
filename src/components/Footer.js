@@ -5,7 +5,7 @@ import { FooterContainer, FooterText } from '../styling/StyledFooter'
 export const Footer = () => {
   return (
     <FooterContainer>
-      <FooterText>Av Annika</FooterText>
+      <FooterText>Av Annika Melin</FooterText>
     </FooterContainer>
   )
 }
